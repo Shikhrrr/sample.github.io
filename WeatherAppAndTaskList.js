@@ -17,19 +17,27 @@ document.addEventListener("DOMContentLoaded", function(){
     localStorage.setItem('counter', counter);
     document.querySelector('#form1').onsubmit = function(){
 
-        const city = document.querySelector("#city").value.toLowerCase();
+        var city = document.querySelector("#city").value.toLowerCase();
+        
+        
         var counter_times = document.querySelector("#counter"); 
         counter++;
-
+        
         if(counter == 1){
             counter_times.innerHTML = `You have checked the weather ${counter} time`;
         } else {
             counter_times.innerHTML = `You have checked the weather ${counter} times`;
         }
         localStorage.setItem('counter', counter);
-
+        
         if(city ==='london'){
             alert("it's always raining in London!");
+        }
+
+        //nyc update for swarn
+        if (city === 'nyc'){
+            city = 'new york';
+            alert("Abhi to chal gya but next time se poora naam dalna");
         }
 
         document.querySelector(".input").value = '';
