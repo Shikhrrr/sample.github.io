@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            let form = document.querySelector("form");
+
+            form.onsubmit = function(){
+
+                var city = document.querySelector("#city");
+                    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=Metric&appid=dd94f859a0e52d6e4767fddf735f04a7`)
+                    .then(response => response.json)
+                    .then(data => {
+                        console.log(data);
+                        // const temp = data.main.temp;
+                        // document.querySelector("#weather").innerHTML = `temp is ${temp}`;
+                    })
+                    
+                    .catch(error => {
+                        console.log(error);
+                    })
+                
+                return false;
+            }
+        });
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" id="city" placeholder="place">
+        <input type="submit">
+    </form>
+    <div id="weather">
+
+    </div>
+</body>
+</html>
