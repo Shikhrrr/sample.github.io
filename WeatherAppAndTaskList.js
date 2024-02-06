@@ -14,7 +14,12 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     var counter = localStorage.getItem('counter');
-    localStorage.setItem('counter', counter);
+    if (!counter) {
+        counter = 0;
+    }
+    else {
+        localStorage.setItem('counter', counter);
+    }
     document.querySelector('#form1').onsubmit = function(){
 
         var city = document.querySelector("#city").value.toLowerCase();
